@@ -2,6 +2,8 @@ import React, { memo, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from './router';
 import request from 'services';
+import AppHeader from './components/app-header';
+import AppFooter from './components/app-footer';
 
 const App = memo(() => {
   useEffect(() => {
@@ -16,10 +18,10 @@ const App = memo(() => {
   }, []);
 
   return (
-    <div>
-      <div className="header">Header</div>
-      <div className="content">{useRoutes(routes)}</div>
-      <div className="footer">Footer</div>
+    <div className="app">
+      <AppHeader />
+      <div className="page">{useRoutes(routes)}</div>
+      <AppFooter />
     </div>
   );
 });
