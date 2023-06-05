@@ -4,7 +4,9 @@ const theme = {
     secondary: '#00848A'
   },
   text: {
-    fontSize: '14px'
+    fontSize: '14px',
+    primaryColor: 'rgba(0, 0, 0, 0.85)',
+    secondaryColor: '#767676'
   },
   mixin: {
     boxShadow: `
