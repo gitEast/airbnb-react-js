@@ -6,6 +6,8 @@ class MyRequest {
       baseURL,
       timeout
     });
+
+    this.instance.interceptors.response.use((res) => res.data);
   }
 
   requrest(config) {

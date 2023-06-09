@@ -3,8 +3,10 @@ import homeSlice from './modules/home';
 import entireSlice from './modules/entire';
 
 const store = configureStore({
-  home: homeSlice,
-  entire: entireSlice
+  reducer: {
+    home: homeSlice,
+    entire: entireSlice
+  }
 });
 
 export default store;

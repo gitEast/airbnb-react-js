@@ -6,10 +6,13 @@ import 'normalize.css';
 import App from './App';
 import 'assets/css/index.less';
 import theme from './assets/theme';
+import { Provider } from 'react-redux';
+import store from 'store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
     <HashRouter>
       <ThemeProvider theme={theme}>
         <Suspense fallback={<h3>loading</h3>}>
@@ -17,5 +20,6 @@ root.render(
         </Suspense>
       </ThemeProvider>
     </HashRouter>
-  </React.StrictMode>
+  </Provider>
+  // </React.StrictMode>
 );
