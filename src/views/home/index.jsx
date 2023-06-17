@@ -7,6 +7,8 @@ import isEmptyObj from 'utils/isEmptyObj';
 import HomeBanner from './c-cpns/home-banner';
 import HomeSectionV1 from './c-cpns/home-section-v1';
 import HomeSectionV2 from './c-cpns/home-section-v2';
+import HomeSectionV3 from './c-cpns/home-section-v3';
+import HomeSectionV4 from './c-cpns/home-section-v4';
 
 import { HomeWrapper } from './style';
 
@@ -17,13 +19,15 @@ const Home = memo(() => {
     goodPriceInfo,
     discountInfo,
     hotRecommendInfo,
-    plusInfo
+    plusInfo,
+    longforInfo
   } = useSelector((state) => ({
     highScoreInfo: state.home.highScoreInfo,
     goodPriceInfo: state.home.goodPriceInfo,
     discountInfo: state.home.discountInfo,
     hotRecommendInfo: state.home.hotRecommendInfo,
-    plusInfo: state.home.plusInfo
+    plusInfo: state.home.plusInfo,
+    longforInfo: state.home.longforInfo
   }));
 
   useEffect(() => {
@@ -38,9 +42,10 @@ const Home = memo(() => {
         {!isEmptyObj(hotRecommendInfo) && (
           <HomeSectionV2 info={hotRecommendInfo} />
         )}
+        <HomeSectionV4 info={longforInfo} />
         <HomeSectionV1 info={highScoreInfo} />
         <HomeSectionV1 info={goodPriceInfo} />
-        <HomeSectionV1 info={plusInfo} />
+        <HomeSectionV3 info={plusInfo} />
       </div>
     </HomeWrapper>
   );

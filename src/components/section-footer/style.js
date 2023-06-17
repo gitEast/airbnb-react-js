@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const FooterWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   margin: 15px 0 10px;
   color: ${(props) => props.color};

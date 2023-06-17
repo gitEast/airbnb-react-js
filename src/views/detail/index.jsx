@@ -1,9 +1,21 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
+import { DetailWrapper } from './style';
+import { shallowEqual, useSelector } from 'react-redux';
+import DetailPictures from './c-cpns/detail-pictures';
 
 const Detail = memo(() => {
-  return (
-    <div>Detail</div>
-  )
-})
+  const { detailInfo } = useSelector(
+    (state) => ({
+      detailInfo: state.detail.detailInfo
+    }),
+    shallowEqual
+  );
 
-export default Detail
+  return (
+    <DetailWrapper>
+      <DetailPictures pictureUrls={detailInfo.picture_urls} />
+    </DetailWrapper>
+  );
+});
+
+export default Detail;

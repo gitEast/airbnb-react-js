@@ -1,8 +1,6 @@
 import { styled } from 'styled-components';
 
-export const TabsWrapper = styled.ul`
-  display: flex;
-
+export const TabsWrapper = styled.div`
   .tab {
     flex-basis: 120px;
     flex-shrink: 0;
@@ -13,6 +11,10 @@ export const TabsWrapper = styled.ul`
     text-align: center;
     font-size: 17px;
     cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &.active,
     &:hover {

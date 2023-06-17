@@ -1,10 +1,12 @@
 import { styled } from 'styled-components';
 
 export const RoomWrapper = styled.li`
+  position: relative;
   width: ${(props) => props.$itemWidth};
   padding: 8px;
   margin: 8px 0;
   box-sizing: border-box;
+  cursor: pointer;
 
   .cover {
     position: relative;
@@ -18,6 +20,90 @@ export const RoomWrapper = styled.li`
       left: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .slider {
+    position: relative;
+
+    .control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      z-index: 9;
+
+      .btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 83px;
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          transparent 0%,
+          rgba(0, 0, 0, 0.25) 100%
+        );
+        color: #fff;
+        cursor: pointer;
+
+        &.right {
+          background: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.25) 100%
+          );
+        }
+      }
+
+      &:hover {
+        .btn {
+          display: flex;
+        }
+      }
+    }
+
+    .slick-arrow {
+      display: none !important;
+    }
+
+    .cover {
+      vertical-align: top;
+    }
+
+    .indicator-wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      width: 30%;
+      margin: 0 auto;
+      overflow: hidden;
+      z-index: 9;
+
+      .dot-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        cursor: pointer;
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          background-color: #fff;
+          border-radius: 50%;
+
+          &.active {
+            width: 8px;
+            height: 8px;
+          }
+        }
+      }
     }
   }
 
