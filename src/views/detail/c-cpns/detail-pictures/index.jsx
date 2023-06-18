@@ -1,8 +1,20 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+
 import { PicturesWrapper } from './style';
+import PictureBrowser from '@/base-ui/picture-brwoser';
 
 const DetailPictures = memo((props) => {
   const { pictureUrls } = props;
+
+  const [isShow, setIsShow] = useState(false);
+
+  function handleShowBtnClick() {
+    setIsShow(true);
+  }
+
+  function closeClick() {
+    setIsShow(false);
+  }
 
   return (
     <PicturesWrapper>
@@ -15,13 +27,19 @@ const DetailPictures = memo((props) => {
         </div>
         <div className="right">
           {pictureUrls.slice(1, 5).map((url) => (
-            <div className="picture-item">
+            <div key={url} className="picture-item">
               <img src={url} alt="" />
               <div className="cover"></div>
             </div>
           ))}
         </div>
       </div>
+      <div className="show-btn" onClick={handleShowBtnClick}>
+        <span>查看照片</span>
+      </div>
+      {isShow && (
+        <PictureBrowser pictureUrls={pictureUrls} closeClick={closeClick} />
+      )}
     </PicturesWrapper>
   );
 });

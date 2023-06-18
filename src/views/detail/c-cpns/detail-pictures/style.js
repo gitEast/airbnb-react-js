@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
 export const PicturesWrapper = styled.div`
+  position: relative;
+
   .picture-list {
     display: flex;
     height: 600px;
@@ -66,5 +68,17 @@ export const PicturesWrapper = styled.div`
         box-sizing: border-box;
       }
     }
+  }
+
+  .show-btn {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    padding: 6px 15px;
+    font-size: 14px;
+    line-height: 22px;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
   }
 `;

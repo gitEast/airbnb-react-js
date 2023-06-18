@@ -8,12 +8,14 @@ import { EntireWrapper } from './style';
 
 import { fetchEntireDataAction } from 'store/modules/entire/actionCreators';
 import EntirePagination from './c-cpns/entire-pagination';
+import { changeHeaderConfigAction } from 'store/modules/main';
 
 const Entire = memo(() => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchEntireDataAction());
+    dispatch(changeHeaderConfigAction({isFixed: true}))
   }, [dispatch]);
 
   return (

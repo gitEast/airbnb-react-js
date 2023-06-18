@@ -1,8 +1,14 @@
 import { styled } from 'styled-components';
 
 export const FilterWrapper = styled.div`
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
   padding: 6px 0 6px 16px;
   border-bottom: 1px solid #f2f2f2;
+  background: #fff;
+  z-index: 9;
 
   .filter-list {
     display: flex;

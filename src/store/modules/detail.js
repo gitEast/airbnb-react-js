@@ -64,7 +64,13 @@ const detailSlice = createSlice({
       lng: 113.3363,
       image_url: '/moreitems/f6693c3015ce910b71c1e75c98bcd64f.jpg'
     }
+  },
+  reducers: {
+    changeDetailInfoAction(state, { payload }) {
+      state.detailInfo = payload;
+    }
   }
 });
 
 export default detailSlice.reducer;
+export const { changeDetailInfoAction } = detailSlice.actions;
