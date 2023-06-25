@@ -1,24 +1,51 @@
-import React, { memo } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { HeaderWrapper } from './style';
+import { useSelector } from 'react-redux';
+import { HeaderWrapper, SearchDetailBgWrapper } from './style';
 import HeaderLeft from './c-cpns/header-left';
 import HeaderCenter from './c-cpns/header-center';
 import HeaderRight from './c-cpns/header-right';
-import { useSelector } from 'react-redux';
+import { useScrollPosition } from 'hooks';
+import { ThemeProvider } from 'styled-components';
 
 const AppHeader = memo(() => {
   const { headerConfig } = useSelector((state) => ({
     headerConfig: state.main.headerConfig
   }));
-  const { isFixed } = headerConfig;
-  console.log(isFixed);
+  const { isFixed, topAlpha } = headerConfig;
+
+  const [isSearch, setIsSearch] = useState(false);
+  function handleSearchBarClick() {
+    setIsSearch(true);
+  }
+  function handleCoverClick() {
+    setIsSearch(false);
+  }
+
+  const prevY = useRef(0);
+  const { scrollY } = useScrollPosition();
+  if (!isSearch) prevY.current = scrollY;
+  if (isSearch && Math.abs(scrollY - prevY.current) > 30) setIsSearch(false);
+
+  const isAlpha = topAlpha && scrollY === 0;
 
   return (
-    <HeaderWrapper className={classNames({ fixed: isFixed })}>
-      <HeaderLeft />
-      <HeaderCenter />
-      <HeaderRight />
-    </HeaderWrapper>
+    <ThemeProvider theme={{ isAlpha }}>
+      <HeaderWrapper className={classNames({ fixed: isFixed })}>
+        <div className="content">
+          <div className="top">
+            <HeaderLeft />
+            <HeaderCenter
+              isSearch={isSearch || isAlpha}
+              searchBarClick={handleSearchBarClick}
+            />
+            <HeaderRight />
+          </div>
+          <SearchDetailBgWrapper isSearch={isSearch} />
+        </div>
+        {isSearch && <div className="cover" onClick={handleCoverClick} />}
+      </HeaderWrapper>
+    </ThemeProvider>
   );
 });
 

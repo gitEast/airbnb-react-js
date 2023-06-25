@@ -15,7 +15,7 @@ const Entire = memo(() => {
 
   useEffect(() => {
     dispatch(fetchEntireDataAction());
-    dispatch(changeHeaderConfigAction({isFixed: true}))
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }));
   }, [dispatch]);
 
   return (

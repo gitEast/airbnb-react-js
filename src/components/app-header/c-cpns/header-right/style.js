@@ -5,6 +5,7 @@ export const RightWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: ${(props) => (props.theme.isAlpha ? '#fff' : '#484848')};
 
   .btns {
     display: flex;
@@ -20,7 +21,8 @@ export const RightWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${(props) =>
+          props.theme.isAlpha ? '#cccccc' : '#f5f5f5'};
       }
     }
   }
@@ -33,7 +35,8 @@ export const RightWrapper = styled.div`
     height: 42px;
     border: 1px solid #ccc;
     border-radius: 25px;
-    color: #484848;
+    color: ${(props) => (props.theme.isAlpha ? '#cccccc' : '#484848')};
+    cursor: pointer;
     ${(props) => props.theme.mixin.boxShadow}
   }
 `;

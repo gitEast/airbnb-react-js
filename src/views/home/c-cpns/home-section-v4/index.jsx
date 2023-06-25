@@ -15,8 +15,8 @@ const HomeSectionV4 = memo((props) => {
       <SectionHeader title={info.title} subtitle={info.subtitle} />
       <div className="longfor-list">
         <ScrollView>
-          {list.map((item) => (
-            <LongforItem key={item.id} item={item} />
+          {list.map((item, idx) => (
+            <LongforItem key={`${item.id}${idx}`} item={item} />
           ))}
         </ScrollView>
       </div>
